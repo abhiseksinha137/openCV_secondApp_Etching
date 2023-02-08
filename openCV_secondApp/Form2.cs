@@ -265,7 +265,7 @@ namespace openCV_secondApp
 
         private void btnDebug_Click(object sender, EventArgs e)
         {
-            deleteOldFolders();
+            start_timer();
         }
 
         void deleteOldFolders()
@@ -325,6 +325,7 @@ namespace openCV_secondApp
                 {
                     etch = true;
                     start_timer();
+                    
                 }
             }
 
@@ -355,15 +356,21 @@ namespace openCV_secondApp
         {
             stopWatch.Start();
             timer_etching.Start();
+            lblCurrentEtchingState.Text = "Etching.";
+            lblCurrentEtchingState.ForeColor = Color.Red;
         }
         public void stop_timer()
         {
             timer_etching.Stop();
             stopWatch.Stop();
+            lblCurrentEtchingState.Text = "Not Etching.";
+            lblCurrentEtchingState.ForeColor = Color.Green;
         }
         public void reset_timer()
         {
+            lblEtchingStat.Text = "Etching Status: 0";
             stopWatch.Reset();
+            stopWatch.Start();
         }
 
         private void btnStopEtch_Click(object sender, EventArgs e)
@@ -374,16 +381,28 @@ namespace openCV_secondApp
         private void btnResetEtch_Click(object sender, EventArgs e)
         {
             reset_timer();
+
         }
 
         private void timer_etching_Tick(object sender, EventArgs e)
         {
-            lblEtchingStat.Text = "Etching Time :" + (1000 * stopWatch.ElapsedMilliseconds).ToString() + " s";
+            lblEtchingStat.Text = "Etching Time : " + ((int)(stopWatch.ElapsedMilliseconds/100)/10).ToString() + " s";
         }
 
         private void chkBxUsecMotion_CheckedChanged(object sender, EventArgs e)
         {
             chkBxUsecMotion.Checked = useMotion;
+        }
+
+        private void debug2_Click(object sender, EventArgs e)
+        {
+            reset_timer();
+            
+        }
+
+        private void debug3_Click(object sender, EventArgs e)
+        {
+            stop_timer();
         }
     }
 }
