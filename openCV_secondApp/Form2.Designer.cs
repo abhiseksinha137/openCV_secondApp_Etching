@@ -47,6 +47,7 @@
             this.btnStopEtch = new System.Windows.Forms.Button();
             this.btnResetEtch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblEtchingState = new System.Windows.Forms.Label();
             this.lblEtchingStat = new System.Windows.Forms.Label();
             this.chkBxUsecMotion = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -54,12 +55,14 @@
             this.comboSerial1 = new customControl.comboSerial();
             this.debug2 = new System.Windows.Forms.Button();
             this.debug3 = new System.Windows.Forms.Button();
-            this.lblEtchingState = new System.Windows.Forms.Label();
             this.lblCurrentEtchingState = new System.Windows.Forms.Label();
+            this.pnlEtchingStatus = new System.Windows.Forms.Panel();
+            this.pnlDebug = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.pnlDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -142,7 +145,7 @@
             "5"});
             this.cmbBxCamNum.Location = new System.Drawing.Point(73, 48);
             this.cmbBxCamNum.Name = "cmbBxCamNum";
-            this.cmbBxCamNum.Size = new System.Drawing.Size(24, 21);
+            this.cmbBxCamNum.Size = new System.Drawing.Size(33, 21);
             this.cmbBxCamNum.TabIndex = 12;
             this.cmbBxCamNum.SelectedIndexChanged += new System.EventHandler(this.cmbBxCamNum_SelectedIndexChanged);
             // 
@@ -168,7 +171,7 @@
             // 
             // btnDebug
             // 
-            this.btnDebug.Location = new System.Drawing.Point(826, 73);
+            this.btnDebug.Location = new System.Drawing.Point(18, 48);
             this.btnDebug.Name = "btnDebug";
             this.btnDebug.Size = new System.Drawing.Size(70, 23);
             this.btnDebug.TabIndex = 17;
@@ -229,6 +232,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pnlEtchingStatus);
+            this.groupBox1.Controls.Add(this.lblCurrentEtchingState);
             this.groupBox1.Controls.Add(this.lblEtchingState);
             this.groupBox1.Controls.Add(this.lblEtchingStat);
             this.groupBox1.Controls.Add(this.chkBxUsecMotion);
@@ -237,10 +242,18 @@
             this.groupBox1.Controls.Add(this.btnStopEtch);
             this.groupBox1.Location = new System.Drawing.Point(463, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(197, 103);
+            this.groupBox1.Size = new System.Drawing.Size(274, 103);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Etching Relay";
+            // 
+            // lblEtchingState
+            // 
+            this.lblEtchingState.AutoSize = true;
+            this.lblEtchingState.Location = new System.Drawing.Point(162, 84);
+            this.lblEtchingState.Name = "lblEtchingState";
+            this.lblEtchingState.Size = new System.Drawing.Size(0, 13);
+            this.lblEtchingState.TabIndex = 25;
             // 
             // lblEtchingStat
             // 
@@ -295,7 +308,7 @@
             // 
             // debug2
             // 
-            this.debug2.Location = new System.Drawing.Point(826, 47);
+            this.debug2.Location = new System.Drawing.Point(18, 0);
             this.debug2.Name = "debug2";
             this.debug2.Size = new System.Drawing.Size(70, 23);
             this.debug2.TabIndex = 23;
@@ -305,44 +318,52 @@
             // 
             // debug3
             // 
-            this.debug3.Location = new System.Drawing.Point(746, 73);
+            this.debug3.Location = new System.Drawing.Point(18, 25);
             this.debug3.Name = "debug3";
-            this.debug3.Size = new System.Drawing.Size(75, 23);
+            this.debug3.Size = new System.Drawing.Size(70, 23);
             this.debug3.TabIndex = 24;
             this.debug3.Text = "Debug3";
             this.debug3.UseVisualStyleBackColor = true;
             this.debug3.Click += new System.EventHandler(this.debug3_Click);
             // 
-            // lblEtchingState
-            // 
-            this.lblEtchingState.AutoSize = true;
-            this.lblEtchingState.Location = new System.Drawing.Point(162, 84);
-            this.lblEtchingState.Name = "lblEtchingState";
-            this.lblEtchingState.Size = new System.Drawing.Size(0, 13);
-            this.lblEtchingState.TabIndex = 25;
-            // 
             // lblCurrentEtchingState
             // 
             this.lblCurrentEtchingState.AutoSize = true;
             this.lblCurrentEtchingState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentEtchingState.Location = new System.Drawing.Point(659, 88);
+            this.lblCurrentEtchingState.Location = new System.Drawing.Point(186, 83);
             this.lblCurrentEtchingState.Name = "lblCurrentEtchingState";
             this.lblCurrentEtchingState.Size = new System.Drawing.Size(81, 15);
             this.lblCurrentEtchingState.TabIndex = 26;
             this.lblCurrentEtchingState.Text = "Not Etching";
+            // 
+            // pnlEtchingStatus
+            // 
+            this.pnlEtchingStatus.BackColor = System.Drawing.Color.Silver;
+            this.pnlEtchingStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEtchingStatus.Location = new System.Drawing.Point(190, 20);
+            this.pnlEtchingStatus.Name = "pnlEtchingStatus";
+            this.pnlEtchingStatus.Size = new System.Drawing.Size(75, 60);
+            this.pnlEtchingStatus.TabIndex = 27;
+            // 
+            // pnlDebug
+            // 
+            this.pnlDebug.Controls.Add(this.btnDebug);
+            this.pnlDebug.Controls.Add(this.debug2);
+            this.pnlDebug.Controls.Add(this.debug3);
+            this.pnlDebug.Location = new System.Drawing.Point(804, 22);
+            this.pnlDebug.Name = "pnlDebug";
+            this.pnlDebug.Size = new System.Drawing.Size(92, 74);
+            this.pnlDebug.TabIndex = 25;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 637);
-            this.Controls.Add(this.lblCurrentEtchingState);
-            this.Controls.Add(this.debug3);
-            this.Controls.Add(this.debug2);
+            this.Controls.Add(this.pnlDebug);
             this.Controls.Add(this.comboSerial1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnDebug);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label2);
@@ -357,6 +378,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.pnlDebug.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,5 +411,7 @@
         private System.Windows.Forms.Button debug3;
         private System.Windows.Forms.Label lblEtchingState;
         private System.Windows.Forms.Label lblCurrentEtchingState;
+        private System.Windows.Forms.Panel pnlEtchingStatus;
+        private System.Windows.Forms.Panel pnlDebug;
     }
 }

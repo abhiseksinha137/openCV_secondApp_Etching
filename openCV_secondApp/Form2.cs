@@ -52,6 +52,9 @@ namespace openCV_secondApp
             cmbBxCamNum.SelectedIndex = 0;
 
             rotateVal = Properties.Settings.Default.rotateVal;
+            
+            
+            pnlDebug.Visible = false;
         }
 
        
@@ -151,7 +154,10 @@ namespace openCV_secondApp
             //{
             //    saveImageFun(rotateImage(currentImage.ToBitmap()), txtBxSavePath.Text);
             //}
-            stopEtching();
+            if (useMotion) {
+                stopEtching();
+            }
+            
         }
 
         public void saveImageFun(Bitmap img, string BasePath)
@@ -358,6 +364,7 @@ namespace openCV_secondApp
             timer_etching.Start();
             lblCurrentEtchingState.Text = "Etching.";
             lblCurrentEtchingState.ForeColor = Color.Red;
+            pnlEtchingStatus.BackColor = Color.Red;
         }
         public void stop_timer()
         {
@@ -365,12 +372,14 @@ namespace openCV_secondApp
             stopWatch.Stop();
             lblCurrentEtchingState.Text = "Not Etching.";
             lblCurrentEtchingState.ForeColor = Color.Green;
+            pnlEtchingStatus.BackColor = Color.Lime;
         }
         public void reset_timer()
         {
             lblEtchingStat.Text = "Etching Status: 0";
             stopWatch.Reset();
             stopWatch.Start();
+            pnlEtchingStatus.BackColor = Color.Silver;
         }
 
         private void btnStopEtch_Click(object sender, EventArgs e)
@@ -386,12 +395,13 @@ namespace openCV_secondApp
 
         private void timer_etching_Tick(object sender, EventArgs e)
         {
-            lblEtchingStat.Text = "Etching Time : " + ((int)(stopWatch.ElapsedMilliseconds/100)/10).ToString() + " s";
+            double timeElapzsed= (int)((double)stopWatch.ElapsedMilliseconds/100.0)/10.0;
+            lblEtchingStat.Text = "Etching Time : " + timeElapzsed.ToString() + " s";
         }
 
         private void chkBxUsecMotion_CheckedChanged(object sender, EventArgs e)
         {
-            chkBxUsecMotion.Checked = useMotion;
+            useMotion= chkBxUsecMotion.Checked;
         }
 
         private void debug2_Click(object sender, EventArgs e)
